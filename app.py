@@ -6,7 +6,7 @@ Created on Sun Jul 14 19:27:56 2019
 """
 
 import os
-from flask import Flask, flash, request, redirect, url_for, send_from_directory
+from flask import Flask, flash, request, redirect, url_for, send_from_directory,render_template
 
 from werkzeug.utils import secure_filename
 
@@ -33,21 +33,13 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value="Upload Now">
-    </form>
-    '''
+            return redirect(url_for('uploaded_file',filename=filename))
+    filecount=len(os.listdir(os.getcwd()+'/Uploads'))    
+    return render_template('upload.html',filecount=filecount)
+
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+    return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS

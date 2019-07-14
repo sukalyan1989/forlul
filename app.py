@@ -10,7 +10,7 @@ from flask import Flask, flash, request, redirect, url_for, send_from_directory
 
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = os.getcwd()+'\\Uploads'
+UPLOAD_FOLDER = os.getcwd()+'/Uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 

@@ -1,3 +1,6 @@
 gunicorn==19.5.0
 flask
 werkzeug
+pandas
+numpy
+requests

@@ -48,9 +48,11 @@ def uploaded_file(filename):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/lul')
+@app.route('/lul',methods=['POST'])
 def lul():
     uname="sharepoint_jade"
+    # print(request.get_json(force=True)['name'])
+    jade_url=request.get_json(force=True)['name']
     jade_url="https://jade.jhpiego.org/api/categoryOptions?filter=name:like:PRJ&fields=name,id,categoryOptionGroups[name,id,code]&paging=false"
 
     login=(uname,"Tu!2NQVnRxzhQAmmMt")

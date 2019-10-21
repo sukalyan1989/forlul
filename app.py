@@ -53,7 +53,7 @@ def lul():
     uname="sharepoint_jade"
     # print(request.get_json(force=True)['name'])
     jade_url=request.get_json(force=True)['name']
-    jade_url="https://jade.jhpiego.org/api/categoryOptions?filter=name:like:PRJ&fields=name,id,categoryOptionGroups[name,id,code]&paging=false"
+    # jade_url="https://jade.jhpiego.org/api/categoryOptions?filter=name:like:PRJ&fields=name,id,categoryOptionGroups[name,id,code]&paging=false"
 
     login=(uname,"Tu!2NQVnRxzhQAmmMt")
 
